@@ -3,7 +3,7 @@
 ## Información general
 | Campo | Detalle |
 |-------|---------|
-| **Estudiante** | Alejo Cangrejo |
+| **Estudiante** | David Alejandro Tutalcha Cabrera|
 | **Asignatura** | Diseño de Software |
 | **Tema** | Polimorfismo |
 
