@@ -1,33 +1,51 @@
-# POLIMORFISMO_BLOQUE7
+# Taller Bloque 7 - Herencia y Polimorfismo en Java
 
-## Datos del estudiante
-- **Nombre:** Nicolas Alejandro Diaz Acosta
-- **Materia:** Diseño de Software
+## Información general
+| Campo | Detalle |
+|-------|---------|
+| **Estudiante** | Alejo Cangrejo |
+| **Asignatura** | Diseño de Software |
+| **Tema** | Polimorfismo |
 
 ---
 
-## Contexto
+## Descripción del ejercicio
 
-Este repositorio corresponde a un ejercicio académico de **Programación Orientada a Objetos** cuyo objetivo es aplicar **herencia y polimorfismo**.
+El objetivo de este taller es poner en práctica los conceptos de **herencia** y **polimorfismo** dentro del paradigma de Programación Orientada a Objetos (POO).
 
-## Enunciado del problema
+### Planteamiento
 
-Una editorial de libros y discos desea crear fichas que almacenen el título y el precio (con coma flotante) de cada publicación. Crear la correspondiente clase (denominada **Publicación**) que implemente los datos anteriores.
+Se requiere modelar un sistema para una editorial que maneja diferentes tipos de publicaciones. La clase base **Publicacion** contiene los atributos comunes: `titulo` (cadena de texto) y `precio` (valor decimal).
 
-A partir de esta clase, diseñar dos clases derivadas: **Libro**, con el número de páginas (tipo int), año de publicación (tipo int) y precio (tipo float); y **Disco** con duración en minutos (tipo float) y precio (tipo int).
+A partir de ella se derivan tres subclases:
 
-Cada una de las tres clases tendrá una función y otra función **mostrar()**, para visualizar sus datos.
+1. **Libro** → agrega `numeroPaginas` (entero), `anioPublicacion` (entero) y `precio` (flotante).
+2. **Disco** → agrega `duracionMinutos` (flotante) y `precio` (entero).
+3. **Video** → agrega `idioma` (enumeración: español, inglés, portugués) y `duracionHoras` (flotante).
 
-Escribir un programa que cree instancias de las clases **Libro** y **Disco**, solicite datos al usuario y a continuación los visualice.
+Todas las clases implementan el método `mostrar()` para visualizar la información en consola.
 
-## Diagrama UML
+## Diagrama de clases
 <img width="1425" height="591" alt="image" src="https://github.com/user-attachments/assets/501a2bb5-b04d-42fb-937a-283e933942e5" />
 
-## Actualización
+## Cómo ejecutar
 
-Agregar al modelo la clase **`Video`**, con:
+```bash
+cd src
+javac *.java
+java Main
+```
 
-- `idioma`: una **enumeración** con valores posibles: **español**, **inglés**, **portugués**
-- `duracionHoras`: **coma flotante**
+## Estructura del proyecto
 
-El programa debe pedir al usuario los datos correspondientes e imprimirlos en pantalla, y se debe entregar **diagrama y programa**.
+```
+tallerBloque7/
+├── README.md
+└── src/
+    ├── Main.java
+    ├── Publicacion.java
+    ├── Libro.java
+    ├── Disco.java
+    ├── Video.java
+    └── Idioma.java
+```

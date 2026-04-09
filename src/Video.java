@@ -1,43 +1,59 @@
-
-
+/**
+ * Subclase de Publicacion que representa un Video.
+ * Contiene el idioma (enumeracion) y la duracion en horas.
+ */
 public class Video extends Publicacion {
-    private Idioma idioma;
-    private float duracionHoras;
 
+    private Idioma lenguaje;
+    private float horas;
+
+    // Constructor por defecto
     public Video() {
-        this.idioma = Idioma.ESPAÑOL;
-        this.duracionHoras = 0;
-    }
-    public Video(String titulo, double precio, Idioma idioma, float duracionHoras) {
-        super(titulo, precio);
-        this.idioma = idioma;
-        this.duracionHoras = duracionHoras;
+        super();
+        this.lenguaje = Idioma.ESPAÑOL;
+        this.horas = 0.0f;
     }
 
-
-    public Idioma getIdioma() {
-        return idioma;
+    // Constructor con parametros
+    public Video(String elTitulo, double elPrecio, Idioma elLenguaje, float lasHoras) {
+        super(elTitulo, elPrecio);
+        this.lenguaje = elLenguaje;
+        this.horas = lasHoras;
     }
 
-    public void setIdioma(Idioma idioma) {
-        this.idioma = idioma;
+    // Getters
+    public Idioma getLenguaje() {
+        return this.lenguaje;
     }
 
-    public float getDuracionHoras() {
-        return duracionHoras;
+    public float getHoras() {
+        return this.horas;
     }
 
-    public void setDuracionHoras(float duracionHoras) {
-        this.duracionHoras = duracionHoras;
+    // Setters
+    public void setLenguaje(Idioma elLenguaje) {
+        this.lenguaje = elLenguaje;
+    }
+
+    public void setHoras(float lasHoras) {
+        this.horas = lasHoras;
+    }
+
+    /**
+     * Muestra los datos completos del video en consola.
+     */
+    @Override
+    public void mostrar() {
+        System.out.println("--- Datos del Video ---");
+        super.mostrar();
+        System.out.println("  Idioma: " + this.lenguaje.obtenerNombre());
+        System.out.println("  Duracion: " + this.horas + " horas");
+        System.out.println("-----------------------");
     }
 
     @Override
     public String toString() {
-        return "Video{" +
-                "titulo=" + super.getTitulo() +
-                ", precio=" + super.getPrecio() +
-                ", idioma=" + idioma +
-                ", duracionHoras=" + duracionHoras +
-                '}';
+        return "Video [titulo=" + getTitulo() + ", precio=" + getPrecio()
+                + ", idioma=" + lenguaje.obtenerNombre() + ", horas=" + horas + "]";
     }
 }

@@ -1,72 +1,109 @@
 import java.util.Scanner;
 
+/**
+ * Clase principal del programa.
+ * Permite al usuario registrar publicaciones de tipo Libro, Disco y Video.
+ */
 public class Main {
+
     public static void main(String[] args) {
-        String titulo;
-        double precio;
-        int anioPublicacion;
-        int numeroPaginas;
-        float duracionMinutos;
-        float duracionHoras;
-        int opcionIdioma;
-        Idioma idioma;
 
-        Scanner input = new Scanner(System.in);
+        Scanner lector = new Scanner(System.in);
 
-        System.out.println("Bienvenido a la editorial");
-        System.out.println("Vamos a crear un libro");
-        System.out.println("Cual es el titulo del libro?");
-        titulo = input.nextLine();
-        System.out.println("Cual es el precio del libro?");
-        precio = input.nextDouble();
-        System.out.println("Cual es el año del libro?");
-        anioPublicacion = input.nextInt();
-        System.out.println("Cual es el numero de paginas del libro?");
-        numeroPaginas = input.nextInt();
+        System.out.println("========================================");
+        System.out.println("   Sistema de Registro de Publicaciones");
+        System.out.println("========================================\n");
 
-        Libro miLibro = new Libro(titulo, precio, anioPublicacion, numeroPaginas);
-        System.out.println(miLibro);
+        // ---- Registro del Libro ----
+        System.out.println(">> Ingrese los datos del LIBRO:");
 
-        input.nextLine();
-        System.out.println("Vamos a crear un disco");
-        System.out.println("Cual es el titulo del disco?");
-        titulo = input.nextLine();
-        System.out.println("Cual es el precio del disco?");
-        precio = input.nextDouble();
-        System.out.println("Cual es la duracion en minutos del disco?");
-        duracionMinutos = input.nextFloat();
+        System.out.print("   Titulo: ");
+        String tituloLibro = lector.nextLine();
 
-        Disco miDisco = new Disco(titulo, precio, duracionMinutos);
-        System.out.println(miDisco);
+        System.out.print("   Precio: ");
+        double precioLibro = lector.nextDouble();
 
-        input.nextLine();
-        System.out.println("Vamos a crear un video");
-        System.out.println("Cual es el titulo del video?");
-        titulo = input.nextLine();
-        System.out.println("Cual es el precio del video?");
-        precio = input.nextDouble();
-        System.out.println("Cual es la duracion en horas del video?");
-        duracionHoras = input.nextFloat();
-        System.out.println("Seleccione el idioma del video:");
-        System.out.println("1. Español");
-        System.out.println("2. Inglés");
-        System.out.println("3. Portugués");
-        opcionIdioma = input.nextInt();
+        System.out.print("   Numero de paginas: ");
+        int paginasLibro = lector.nextInt();
 
-        if (opcionIdioma == 1) {
-            idioma = Idioma.ESPAÑOL;
-        } else if (opcionIdioma == 2) {
-            idioma = Idioma.INGLES;
-        } else if (opcionIdioma == 3) {
-            idioma = Idioma.PORTUGUES;
-        } else {
-            System.out.println("Opcion no valida, se asignara Español por defecto.");
-            idioma = Idioma.ESPAÑOL;
+        System.out.print("   Año de publicacion: ");
+        int anioLibro = lector.nextInt();
+
+        Libro objLibro = new Libro(tituloLibro, precioLibro, paginasLibro, anioLibro);
+        System.out.println();
+        objLibro.mostrar();
+
+        // Limpiar el buffer
+        lector.nextLine();
+
+        // ---- Registro del Disco ----
+        System.out.println("\n>> Ingrese los datos del DISCO:");
+
+        System.out.print("   Titulo: ");
+        String tituloDisco = lector.nextLine();
+
+        System.out.print("   Precio: ");
+        double precioDisco = lector.nextDouble();
+
+        System.out.print("   Duracion (minutos): ");
+        float minDisco = lector.nextFloat();
+
+        Disco objDisco = new Disco(tituloDisco, precioDisco, minDisco);
+        System.out.println();
+        objDisco.mostrar();
+
+        // Limpiar el buffer
+        lector.nextLine();
+
+        // ---- Registro del Video ----
+        System.out.println("\n>> Ingrese los datos del VIDEO:");
+
+        System.out.print("   Titulo: ");
+        String tituloVideo = lector.nextLine();
+
+        System.out.print("   Precio: ");
+        double precioVideo = lector.nextDouble();
+
+        System.out.print("   Duracion (horas): ");
+        float horasVideo = lector.nextFloat();
+
+        System.out.println("   Seleccione un idioma:");
+        System.out.println("     1 -> Español");
+        System.out.println("     2 -> Inglés");
+        System.out.println("     3 -> Portugués");
+        System.out.print("   Opcion: ");
+        int seleccion = lector.nextInt();
+
+        Idioma idiomaElegido;
+        switch (seleccion) {
+            case 1:
+                idiomaElegido = Idioma.ESPAÑOL;
+                break;
+            case 2:
+                idiomaElegido = Idioma.INGLES;
+                break;
+            case 3:
+                idiomaElegido = Idioma.PORTUGUES;
+                break;
+            default:
+                System.out.println("   * Opcion invalida. Se asigna Español.");
+                idiomaElegido = Idioma.ESPAÑOL;
+                break;
         }
 
-        Video miVideo = new Video(titulo, precio, idioma, duracionHoras);
-        System.out.println(miVideo);
+        Video objVideo = new Video(tituloVideo, precioVideo, idiomaElegido, horasVideo);
+        System.out.println();
+        objVideo.mostrar();
 
-        input.close();
+        // Resumen final
+        System.out.println("\n========================================");
+        System.out.println("         Resumen de publicaciones");
+        System.out.println("========================================");
+        System.out.println(objLibro);
+        System.out.println(objDisco);
+        System.out.println(objVideo);
+        System.out.println("========================================");
+
+        lector.close();
     }
 }

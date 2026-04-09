@@ -1,35 +1,47 @@
-
-
+/**
+ * Subclase de Publicacion que modela un Disco.
+ * Agrega la duracion expresada en minutos.
+ */
 public class Disco extends Publicacion {
-    private float duracionMinutos;
 
-    public Disco(String titulo, double precio, float duracionMinutos) {
-        super(titulo, precio);
-        this.duracionMinutos = duracionMinutos;
-    }
+    private float minutos;
 
-    public Disco(float duracionMinutos) {
-        this.duracionMinutos = duracionMinutos;
-    }
-
+    // Constructor sin argumentos
     public Disco() {
-        this.duracionMinutos = 0;
+        super();
+        this.minutos = 0.0f;
     }
 
-    public float getDuracionMinutos() {
-        return duracionMinutos;
+    // Constructor completo
+    public Disco(String elTitulo, double elPrecio, float losMinutos) {
+        super(elTitulo, elPrecio);
+        this.minutos = losMinutos;
     }
 
-    public void setDuracionMinutos(float duracionMinutos) {
-        this.duracionMinutos = duracionMinutos;
+    // Getter
+    public float getMinutos() {
+        return this.minutos;
+    }
+
+    // Setter
+    public void setMinutos(float losMinutos) {
+        this.minutos = losMinutos;
+    }
+
+    /**
+     * Imprime los datos del disco en consola.
+     */
+    @Override
+    public void mostrar() {
+        System.out.println("--- Datos del Disco ---");
+        super.mostrar();
+        System.out.println("  Duracion: " + this.minutos + " min");
+        System.out.println("-----------------------");
     }
 
     @Override
     public String toString() {
-        return "Disco{" +
-                "titulo=" + super.getTitulo() +
-                ", precio=" + super.getPrecio() +
-                ", duracionMinutos=" + duracionMinutos +
-                '}';
+        return "Disco [titulo=" + getTitulo() + ", precio=" + getPrecio()
+                + ", minutos=" + minutos + "]";
     }
 }

@@ -1,47 +1,59 @@
-
-
+/**
+ * Subclase de Publicacion que representa un Libro.
+ * Incluye numero de paginas y año de publicacion.
+ */
 public class Libro extends Publicacion {
-    private int anioPublicacion;
-    private int numeroPaginas;
 
-    public Libro(int anioPublicacion, int numeroPaginas) {
-        this.anioPublicacion = anioPublicacion;
-        this.numeroPaginas = numeroPaginas;
-    }
+    private int paginas;
+    private int anio;
+
+    // Constructor vacio
     public Libro() {
-        this.anioPublicacion = 0;
-        this.numeroPaginas = 0;
+        super();
+        this.paginas = 0;
+        this.anio = 0;
     }
 
-    public Libro(String titulo, double precio, int anioPublicacion, int numeroPaginas) {
-        super(titulo, precio);
-        this.anioPublicacion = anioPublicacion;
-        this.numeroPaginas = numeroPaginas;
+    // Constructor con todos los datos
+    public Libro(String elTitulo, double elPrecio, int lasPaginas, int elAnio) {
+        super(elTitulo, elPrecio);
+        this.paginas = lasPaginas;
+        this.anio = elAnio;
     }
 
-    public int getAnioPublicacion() {
-        return anioPublicacion;
+    // Getters
+    public int getPaginas() {
+        return this.paginas;
     }
 
-    public void setAnioPublicacion(int anioPublicacion) {
-        this.anioPublicacion = anioPublicacion;
+    public int getAnio() {
+        return this.anio;
     }
 
-    public int getNumeroPaginas() {
-        return numeroPaginas;
+    // Setters
+    public void setPaginas(int lasPaginas) {
+        this.paginas = lasPaginas;
     }
 
-    public void setNumeroPaginas(int numeroPaginas) {
-        this.numeroPaginas = numeroPaginas;
+    public void setAnio(int elAnio) {
+        this.anio = elAnio;
+    }
+
+    /**
+     * Muestra toda la informacion del libro por consola.
+     */
+    @Override
+    public void mostrar() {
+        System.out.println("--- Datos del Libro ---");
+        super.mostrar();
+        System.out.println("  Paginas: " + this.paginas);
+        System.out.println("  Año: " + this.anio);
+        System.out.println("-----------------------");
     }
 
     @Override
     public String toString() {
-        return "Libro{" +
-                "titulo=" + super.getTitulo() +
-                ", precio=" + super.getPrecio() +
-                ", anioPublicacion=" + anioPublicacion +
-                ", numeroPaginas=" + numeroPaginas +
-                '}';
+        return "Libro [titulo=" + getTitulo() + ", precio=" + getPrecio()
+                + ", paginas=" + paginas + ", anio=" + anio + "]";
     }
 }

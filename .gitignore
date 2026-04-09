@@ -1,2 +1,11 @@
+# Archivos compilados
 *.class
-.rbxsync-trash/
+
+# Carpeta de IDE
+.idea/
+*.iml
+.vscode/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
